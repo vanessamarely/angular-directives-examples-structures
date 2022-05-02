@@ -1,0 +1,104 @@
+<h1>Directives</h1>
+
+<!-- ngModel examples -->
+<div>
+  <input type="test" [(ngModel)]="name" />
+  <p>{{ name }}</p>
+</div>
+
+<!-- ngClass examples -->
+<div [ngClass]="{ success: true }">
+  <p>Success!!</p>
+</div>
+
+<!-- ngStyle examples -->
+<div [ngStyle]="{ 'background-color': 'aqua', padding: '10px' }">
+  <p>We have style!!</p>
+</div>
+
+<!-- ngFor examples -->
+<section class="super-heroes">
+  <h3>Super Heroes</h3>
+  <ul class="heroes">
+    <li *ngFor="let hero of superHeroes" (click)="onSelect(hero)">
+      <span class="badge">{{ hero?.id }}</span> {{ hero?.name }}
+    </li>
+  </ul>
+</section>
+
+<!-- ngIf examples -->
+<section class="img-section" *ngIf="selectedHero?.name">
+  <h2>{{ selectedHero?.name }}</h2>
+  <img [src]="selectedHero?.img" alt="selectedHero?.name" />
+</section>
+
+<!-- ngIf and else example -->
+<div *ngIf="selectedHero?.name; else noSelected">
+  <p>Hi! super Hero!: {{ selectedHero?.name }} selected!</p>
+</div>
+
+<ng-template #noSelected>
+  <p>Sorry! we don't have any superHero selected</p>
+</ng-template>
+
+<!-- ngSwitch examples -->
+<section>
+  <h3>Type of Super Heroes</h3>
+  <ul class="heroes" *ngFor="let hero of superHeroes" [ngSwitch]="hero?.type">
+    <li *ngSwitchCase="'Marvel'" class="text-opt1">
+      <span class="badge">{{ hero?.name }}</span> {{ hero?.type }}
+    </li>
+    <li *ngSwitchCase="'DC'" class="text-opt2">
+      <span class="badge">{{ hero?.name }}</span> {{ hero?.type }}
+    </li>
+    <li *ngSwitchDefault class="text-opt3">
+      <span class="badge">{{ hero?.name }}</span> {{ hero?.type }}
+    </li>
+  </ul>
+</section>
+
+<!-- ngPlural example -->
+<section [ngPlural]="numberOfHeroes">
+  <h3>Number of Super Heroes</h3>
+  <ng-template ngPluralCase="=0">
+    <p>No Super Heroes</p>
+  </ng-template>
+  <ng-template ngPluralCase=">=10">
+    <p>{{ numberOfHeroes }} Super Heroes</p>
+  </ng-template>
+  <ng-template ngPluralCase="=12">
+    <p>{{ numberOfHeroes }} Super Heroes!</p>
+  </ng-template>
+</section>
+
+<!-- ng-template example -->
+<section>
+  <ng-template #noSuperHeroes>
+    <p>There is not super Heroes to show!</p>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="noSuperHeroes"> </ng-container>
+</section>
+
+<!-- ngComponentOutlet example -->
+<section class="component-outlet">
+  <button type="button" (click)="renderComponent()">
+    Render Dynamic component
+  </button>
+
+  <ng-container *ngComponentOutlet="currentComponent"> </ng-container>
+</section>
+
+<!-- Custom Directive Example -->
+<section>
+  <p appHighlight>Highlight me!</p>
+
+  <p [appHighlight]="color">Highlight me too!</p>
+
+  <p [appHighlight]="color" defaultColor="coral">Highlight me again!</p>
+
+  <div>
+    <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+    <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+  </div>
+</section>

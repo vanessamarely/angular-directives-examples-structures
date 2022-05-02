@@ -1,0 +1,66 @@
+* {
+  font-family: sans-serif;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+input {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+section {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+section.img-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.img-section img {
+  width: 200px;
+}
+
+section.super-heroes ul li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.success {
+  color: darkgreen;
+  margin: 10px;
+}
+
+.component-outlet button {
+  border-radius: 10px;
+  border: 0;
+  background-color: coral;
+  color: wheat;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.text-opt1 {
+  color: aquamarine;
+}
+
+.text-opt2 {
+  color: salmon;
+}
+
+.text-opt3 {
+  color: coral;
+}
